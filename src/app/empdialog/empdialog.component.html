@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>ADD FROM <mat-icon [mat-dialog-close]="true" style="margin-left: 6.5cm;">highlight_off</mat-icon>
+<h1 mat-dialog-title>registration<mat-icon [mat-dialog-close]="true" style="margin-left: 6.5cm;">highlight_off
+    </mat-icon>
 </h1>
 <div mat-dialog-content>
     <form [formGroup]="empform" novalidate class="d-flex-center">
@@ -7,13 +8,12 @@
             <!-- input type Name -->
             <div>
                 <mat-form-field appearance="outline">
-                    <mat-label>Full Name</mat-label>
-                    <input matInput placeholder="John kerry" formControlName="name">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="John" formControlName="name">
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                    <mat-hint>Your Name</mat-hint>
-                    <mat-error
-                        *ngIf="empform.get('name')?.invalid && (empform.get('name')?.dirty || empform.get('name')?.touched) && empform.get('name')?.errors?.required">
-                        name is required
+                    <mat-hint>First Name</mat-hint>
+                    <mat-error *ngIf="empform.get('name')?.invalid && (empform.get('name')?.dirty || empform.get('name')?.touched) && empform.get('name')?.errors?.required">
+                        First name is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
             </div>
@@ -21,20 +21,140 @@
             <!-- input type email -->
             <div>
                 <mat-form-field appearance="outline">
-                    <mat-label>E-Mail</mat-label>
-                    <input matInput placeholder="E-Mail" formControlName="email">
-                    <mat-icon matSuffix>alternate_email</mat-icon>
-                    <mat-hint>Example@gmail.com</mat-hint>
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="kerry" formControlName="lname">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>last Name</mat-hint>
                     <mat-error
-                        *ngIf="!empform.get('email')?.errors?.required && (empform.get('email')?.errors?.pattern)">
-                        Please enter a valid email address
-                    </mat-error>
-                    <mat-error
-                        *ngIf="empform.get('email')?.invalid && (empform.get('email')?.dirty || empform.get('email')?.touched) && empform.get('email')?.errors?.required">
-                        Email is required
+                        *ngIf="empform.get('lname')?.invalid && (empform.get('lname')?.dirty || empform.get('lname')?.touched) && empform.get('lname')?.errors?.required">
+                        name is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
             </div>
+
+            <!-- input type radio for gender -->
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Select an option</mat-label>
+                    <mat-select formControlName="genders">
+                        <mat-option>None</mat-option>
+                        <mat-option value="Male">Male</mat-option>
+                        <mat-option value="Female">Female</mat-option>
+                        <mat-option value="Others">Others</mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="empform.get('genders')?.invalid && (empform.get('genders')?.dirty || empform.get('genders')?.touched) && empform.get('genders')?.errors?.required">
+                        genders is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- input type date for age -->
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date" [(ngModel)]="birthdate" id="txtdate"
+                        (ngModelChange)="CalculateAge($event)">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error
+                        *ngIf="empform.get('date')?.invalid && (empform.get('date')?.dirty || empform.get('date')?.touched) && empform.get('date')?.errors?.required">
+                        date is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- input type tel for Age -->
+            <div>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Age</mat-label>
+                    <input matInput placeholder="18" formControlName="age" [(ngModel)]="age" id="age">
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <!-- input type textarea for Address -->
+            <div>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput placeholder="Ex. 100 Main St" formControlName="address"></textarea>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Address 2</mat-label>
+                    <textarea matInput formControlName="address"></textarea>
+                </mat-form-field>
+                <mat-error
+                    *ngIf="empform.get('address')?.invalid && (empform.get('address')?.dirty || empform.get('address')?.touched) && empform.get('address')?.errors?.required">
+                    address is <strong>required</strong>
+                </mat-error>
+            </div>
+
+            <!-- input type tel for Phone Number -->
+            <div>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <span matPrefix>+91 &nbsp;</span>
+                    <input type="tel" matInput placeholder="8756459327" minlength="10" maxlength="10"
+                        formControlName="pnumber">
+                    <mat-icon matSuffix>local_phone</mat-icon>
+                    <mat-error
+                        *ngIf="empform.get('pnumber')?.invalid && (empform.get('pnumber')?.dirty || empform.get('pnumber')?.touched) && empform.get('pnumber')?.errors?.required">
+                        pnumber is <strong>required</strong>
+                    </mat-error>
+                    <mat-error
+                        *ngIf="!empform.get('pnumber')?.errors?.required && (empform.get('pnumber')?.errors?.pattern)">
+                        Please enter a valid phone number
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- input type tel for Pin code  -->
+            <div>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Pin code</mat-label>
+                    <input type="tel" matInput placeholder="400072" formControlName="pincode">
+                    <mat-icon matSuffix>place</mat-icon>
+                    <mat-error
+                        *ngIf="empform.get('pincode')?.invalid && (empform.get('pincode')?.dirty || empform.get('pincode')?.touched) && empform.get('pincode')?.errors?.required">
+                        pincode is <strong>required</strong>
+                    </mat-error>
+                    <mat-error
+                        *ngIf="!empform.get('pincode')?.errors?.required && (empform.get('pincode')?.errors?.pattern)">
+                        Please enter a valid pincode
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- input type State -->
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="state" formControlName="state">
+                    <mat-icon matSuffix>place</mat-icon>
+                    <mat-hint>Your State</mat-hint>
+                    <mat-error
+                        *ngIf="empform.get('state')?.invalid && (empform.get('state')?.dirty || empform.get('state')?.touched) && empform.get('state')?.errors?.required">
+                        state is <strong>required</strong>
+                    </mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <!-- input type District -->
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>District</mat-label>
+                    <input matInput placeholder="District" formControlName="district">
+                    <mat-icon matSuffix>place</mat-icon>
+                    <mat-hint>Your District</mat-hint>
+                    <mat-error
+                        *ngIf="empform.get('district')?.invalid && (empform.get('district')?.dirty || empform.get('district')?.touched) && empform.get('district')?.errors?.required">
+                        District is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
 
             <!-- button Submit -->
             <div>

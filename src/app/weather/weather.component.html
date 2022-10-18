@@ -1,0 +1,43 @@
+<div class="container">
+    <div>
+        <h3 class="text-center my-4">Search for Weather:</h3>
+        <form [formGroup]="weatherSearchForm" (ngSubmit)="sendToApi(weatherSearchForm.value)">
+            <div class="form-group">
+                <mat-form-field appearance="fill">
+                    <mat-label>Weather Location</mat-label>
+                    <input matInput type="text" id="weatherLocation" placeholder="Please input a Location"
+                        formControlName="location"/>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" class="btn btn-success btn-md">
+                    Search
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <h3>Weather Details:</h3>
+        <p>
+            Current weather conditions:
+            {{ this.weatherData?.current.condition.text }}.
+        </p>
+        <p>
+            Temperature in Degrees Celsius: {{ this.weatherData?.current.temp_c }}
+        </p>
+        <p>
+            Temperature in Degrees Farenheit: {{ this.weatherData?.current.temp_f }}
+        </p>
+        <p>
+            Feels like in Degrees Celsius:
+            {{ this.weatherData?.current.feelslike_c }}
+        </p>
+        <p>
+            Feels like in Degrees Farenheit:
+            {{ this.weatherData?.current.feelslike_f }}
+        </p>
+        <p>
+            Location Searched: {{ this.weatherData?.location.name }},
+            {{ this.weatherData?.location.country }}.
+        </p>
+    </div>
+</div>

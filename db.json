@@ -1,14 +1,30 @@
 {
   "emplist": [
     {
-      "name": "Vikas Sahu",
-      "email": "abc@gmail.com",
+      "name": "Vikas",
+      "lname": "Sahu",
+      "genders": "Male",
+      "date": "1998-11-04T18:30:00.000Z",
+      "address": "powai",
+      "age": 23,
+      "pnumber": "7208527940",
+      "pincode": "400072",
+      "state": "Maharashtra ",
+      "district": "Mumbai",
       "id": 1
     },
     {
-      "name": "Vikas Sahu",
-      "email": "abc@gmail.com",
-      "id": 3
+      "name": "Sanjay",
+      "lname": "pal",
+      "genders": "Male",
+      "date": "1997-10-02T18:30:00.000Z",
+      "address": "powai",
+      "age": 25,
+      "pnumber": "8899124330",
+      "pincode": "400072",
+      "state": "Maharashtra ",
+      "district": "Mumbai",
+      "id": 2
     }
   ],
   "comments": [

@@ -16,13 +16,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ToastrModule } from 'ngx-toastr';
-
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { WeatherComponent } from './weather/weather.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmpdialogComponent
+    EmpdialogComponent,
+    WeatherComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,11 @@ import { ToastrModule } from 'ngx-toastr';
     MatPaginatorModule,
     MatSortModule,
     ToastrModule.forRoot(),
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

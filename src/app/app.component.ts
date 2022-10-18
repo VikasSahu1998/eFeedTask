@@ -13,10 +13,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
   title = 'crud_Mat';
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'action'];
+  displayedColumns: string[] = ['id', 'name', 'lname', 'genders', 'date', 'age', 'address', 'pnumber', 'pincode', 'state', 'district', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -83,3 +82,4 @@ export class AppComponent implements OnInit {
     }
   }
 }
+
